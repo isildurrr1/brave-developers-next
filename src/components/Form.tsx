@@ -1,8 +1,10 @@
+'use client'
 import { useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { FormProps, IElement } from '../types/types';
 import OperatorElement from './OperatorElement';
-import { apiRes } from 'data/api';
+import { apiRes } from '@/data/api';
+import Image from 'next/image';
 
 const Form: React.FC<FormProps> = ({ data, goHome }) => {
 
@@ -41,7 +43,7 @@ const Form: React.FC<FormProps> = ({ data, goHome }) => {
     <>
       <div className={`popup ${isOpened ? 'opened' : ''}`}>
         <div className="popup__container">
-          <img src={apiResult.logo} alt={apiResult.name} className="resultIcon" />
+          <Image src={apiResult.logo} alt={apiResult.name} className="resultIcon"></Image>
           <p className="subtitle">{apiResult.name}</p>
         </div>
       </div>
