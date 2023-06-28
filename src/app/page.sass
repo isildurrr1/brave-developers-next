@@ -1,0 +1,194 @@
+.App 
+  width: 700px
+  height: 550px
+  background-color: #e6e6e6
+  margin: auto
+  border-radius: 10px
+  display: flex
+  flex-direction: column
+  box-shadow: 5px 5px 14px 2px #39393a
+  overflow: auto
+
+a
+  text-decoration: none
+
+.list
+  background-color: #E6E6E6
+  margin: auto
+  width: 90%
+  border-radius: 10px
+  display: grid
+  grid-template-columns: repeat(2, auto)
+  align-items: center
+  gap: 10px
+  padding: 10px 10px
+  overflow: auto
+  box-sizing: border-box
+
+.element
+  background-color: #EADAD4
+  border-radius: 10px
+  height: 80px
+  display: flex
+  justify-content: space-between
+  cursor: pointer
+  transition: transform 0.3s, box-shadow 0.3s
+  user-select: none
+  &:hover
+    transform: scale(1.02)
+    opacity: 0.8
+  &:active
+    transform: scale(1)
+
+.logo
+  box-sizing: border-box
+  padding: 5px
+  object-fit: contain
+  border-radius: 10px
+  margin: auto 0 auto 0
+
+.label
+  font-family: 'Balsamiq Sans'
+  font-style: italic
+  font-size: 30px
+  color: #FF8552
+  margin: auto
+
+.title
+  font-family: 'Balsamiq Sans'
+  font-style: italic
+  font-size: 50px
+  color: #FF8552
+  margin: 30px auto 0 auto
+  text-align: center
+
+.operator__element
+  border-radius: 10px
+  height: 80px
+  width: 35%
+  display: flex
+  margin: 20px auto 0 auto
+  user-select: none
+
+.form 
+  margin: 60px auto 0 auto
+  width: 50%
+  display: flex
+  flex-direction: column
+
+.input
+  height: 30px
+  border: none
+  border-radius: 2px
+  border-bottom: 2px solid #FF8552
+  background-color: #e6e6e6
+  font-size: 17px
+  font-family: 'Balsamiq Sans'
+  margin: 10px
+  text-align: center
+  &:focus
+    color: #212529
+    border-color: #FF8552
+    outline: 0
+
+.button
+  border: none
+  width: 60%
+  height: 35px
+  border-radius: 5px
+  cursor: pointer
+  font-family: 'Balsamiq Sans'
+  transition: transform .3s, opacity .3s
+  &:hover
+    transform: scale(1.02)
+    opacity: 0.8
+  &:active
+    transform: scale(1)
+  &:disabled
+    background-color: grey
+    transform: scale(1)
+    opacity: 0.2
+
+.submit
+  margin: 20px auto 0 auto
+  background-color: #FF8552
+  color: white
+
+.backButton
+  margin: 10px auto 0 auto
+  background-color: white
+  border: 2px solid #FF8552
+  color: #FF8552
+
+
+.popup 
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.5)
+  visibility: hidden
+  opacity: 0
+  transition: visibility 0.2s, opacity 0.2s linear
+  z-index: 3
+
+.opened 
+  visibility: visible
+  opacity: 1
+  transition: visibility 0.2s, opacity 0.2s linear
+
+.popup__container 
+  position: relative
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 250px
+  height: 250px
+  border-radius: 10px
+  background-color: white
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15)
+  display: flex
+  flex-direction: column
+
+.resultIcon 
+  margin: 30px auto
+  width: 40%
+
+.subtitle
+  font-family: 'Balsamiq Sans'
+  margin: 0 auto
+  text-align: center
+  font-size: 40px
+  color: #FF8552
+
+@media screen and (max-width: 800px)
+  .App
+    width: 100vw
+    box-shadow: none
+    height: 100vh
+    border-radius: 0
+  .list
+    padding: 20px 10px
+  .title
+    margin: 50px auto 0 auto
+
+@media screen and (max-width: 613px)
+  .logo
+    width: 80px
+    height: 60px
+  .label
+    font-size: 25px
+
+@media screen and (max-width: 475px)
+  .App
+    width: 100vw
+    height: 100vh
+  .list
+    grid-template-columns: repeat(1, auto)
+  .title
+    font-size: 50px
+  .input
+    font-size: 14px
+  .operator__element
+    width: 50%
