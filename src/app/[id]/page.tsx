@@ -21,7 +21,7 @@ export const Operator = ({ params }: Props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({ mode: "all" });
   const navigate = useRouter()
   const onSubmit = (data: any) => {
-    console.log(data.phone.length)
+    console.log(data.phone.length);
   }
   return (
     <div className="App">
