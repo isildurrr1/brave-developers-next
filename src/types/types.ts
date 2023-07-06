@@ -4,24 +4,29 @@ export interface IElement {
 }
 
 export interface ElementProps {
-  id: number
-  data: IElement
+  id: number,
+  data: IElement,
 }
 
 export interface ListProps {
-  operatorChoice: Function
+  operatorChoice: Function,
 }
 
 export interface FormProps {
-  data: IElement
-  goHome: Function
+  data: IElement,
+  goHome: Function,
 }
 
 export interface ProtectFormProps {
-  data: IElement | null
-  goHome: Function
+  data: IElement | null,
+  goHome: Function,
 }
 
 export interface OperatorElementProps {
-  data: IElement
+  data: IElement,
+}
+
+export interface PopupProps {
+  isOpened: boolean,
+  response: IElement,
 }
