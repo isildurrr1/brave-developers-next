@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 import inputMask from '@/utils/inputMask';
-import { IElement } from '@/types/types';
+import { FormProps } from '@/types/types';
 
-const Form: React.FC = () => {
+const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
 
   const [textSubmitButton, setTextSubmitButton] = useState<string>('Пополнить');
   const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
@@ -16,14 +16,10 @@ const Form: React.FC = () => {
 
   const {
     register,
-    formState: {
-      errors
-    },
+    formState: { errors },
     handleSubmit,
     reset,
-  } = useForm(
-    { mode: 'all' }
-  );
+  } = useForm({ mode: 'all' });
 
   const changeInputPhone = (e: React.FormEvent<HTMLInputElement>) => {
     setPhone(inputMask(e));
@@ -36,20 +32,38 @@ const Form: React.FC = () => {
     if (regExp.test(value)) setSum(value);
   }
 
+  const loadingBtn = (boolean: boolean) => {
+    if (boolean) {
+      setTextSubmitButton('Пополнение...');
+      setDisabledBtn(true);
+    } else {
+      setTextSubmitButton('Пополнить');
+      setDisabledBtn(false);
+    }
+  }
+
   const onSubmit = () => {
-    const ApiResponse = () => new Promise((resolve, reject) => {
+    const myFetch = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         const result = Math.floor(Math.random() * 2);
         if (!result) resolve('Успешно');
-        else reject('Ошибка');
+        else reject(new Error("Ошибка!"));
       }, 1700)
     })
-    ApiResponse()
+    loadingBtn(true);
+    myFetch()
       .then((e) => {
-        console.log(e)
+        loadingBtn(false);
+        response(true);
+        setIsOpened(true)
+        setTimeout(() => { setIsOpened(false); navigate.push('/') }, 1000)
       })
-      .catch((e) => {
-        console.log(e)
+      .catch((err) => {
+        loadingBtn(false);
+        response(false);
+        setIsOpened(true)
+        setTimeout(() => { setIsOpened(false) }, 1000)
+        console.log(err)
       })
   }
 

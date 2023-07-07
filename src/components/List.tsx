@@ -1,8 +1,7 @@
 import { apiOperators } from '../data/api'
-import { ListProps } from '../types/types';
 import Element from './Element';
 
-const List: React.FC<ListProps> = () => {
+const List: React.FC = () => {
   return (
     <>
       <h1 className="title">Выберите оператора</h1>

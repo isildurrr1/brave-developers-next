@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react"
 export interface IElement {
   'name': string,
   'logo': string,
@@ -8,13 +9,9 @@ export interface ElementProps {
   data: IElement,
 }
 
-export interface ListProps {
-  operatorChoice: Function,
-}
-
 export interface FormProps {
-  data: IElement,
-  goHome: Function,
+  setIsOpened: Dispatch<SetStateAction<boolean>>
+  response: Dispatch<SetStateAction<boolean | undefined>>
 }
 
 export interface ProtectFormProps {
@@ -28,5 +25,5 @@ export interface OperatorElementProps {
 
 export interface PopupProps {
   isOpened: boolean,
-  response: IElement,
+  response: boolean | undefined,
 }
