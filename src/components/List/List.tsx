@@ -1,5 +1,5 @@
-import { apiOperators } from '../data/api'
-import Element from './Element';
+import { apiOperators } from '../../data/api'
+import Element from '../Element/Element';
 
 const List: React.FC = () => {
   return (

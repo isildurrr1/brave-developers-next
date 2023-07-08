@@ -1,4 +1,4 @@
-import { ElementProps } from "../types/types";
+import { ElementProps } from "../../types/types";
 import Link from "next/link";
 import Image from "next/image";
 

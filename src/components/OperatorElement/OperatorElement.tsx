@@ -1,7 +1,7 @@
-import { OperatorElementProps } from "../types/types";
+import { OperatorElementProps } from "../../types/types";
 import Image from "next/image";
 
-const OperatorElement:React.FC<OperatorElementProps> = ({data}) => {
+const OperatorElement: React.FC<OperatorElementProps> = ({ data }) => {
   return (
     <div className="operator">
       <div className="operator__element">
