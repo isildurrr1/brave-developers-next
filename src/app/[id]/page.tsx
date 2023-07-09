@@ -38,7 +38,7 @@ const Title = styled.h1`
 
 interface Props { params: { id: number } }
 
-export const Operator = ({ params }: Props) => {
+export default function Operator({ params }: Props) {
   const [isOpened, setIsOpened] = useState(false);
   const [apiResult, setApiResult] = useState<boolean | undefined>()
   return (
@@ -49,6 +49,4 @@ export const Operator = ({ params }: Props) => {
       <Form setIsOpened={setIsOpened} response={setApiResult} />
     </App>
   )
-}
-export default Operator
-
+};
