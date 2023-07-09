@@ -16,6 +16,6 @@ Web приложение - терминал оплаты мобильного т
 - **React Hooks**
 - **Styled-Components**
 ## Итоговый результат:
-### >>> [Ссылка на демо](https://test-brave-developers.vercel.app/) <<<
+### >>> [Ссылка на демо](https://brave-developers-next-oxp4.vercel.app/) <<<
 ![img](./src/images/Screenshot1.jpg)
 ![img](./src/images/Screenshot2.jpg)
