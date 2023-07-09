@@ -1,7 +1,7 @@
 import './globals.sass'
-import { Inter } from 'next/font/google'
+import { Balsamiq_Sans } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const balsamiq_Sans = Balsamiq_Sans({ weight: ["400" , "700"], subsets: ["cyrillic"] });
 
 export const metadata = {
   title: 'App',
@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ru">
+      <body className={balsamiq_Sans.className}>{children}</body>
     </html>
   )
 }

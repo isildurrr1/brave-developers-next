@@ -4,6 +4,71 @@ import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 import inputMask from '@/utils/inputMask';
 import { FormProps } from '@/types/types';
+import { styled } from 'styled-components';
+
+const FormStyled = styled.form`
+  margin: 60px auto 0 auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const InputStyled = styled.input`
+  font-family: inherit;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 2px solid #FF8552;
+  background-color: #e6e6e6;
+  font-size: 17px;
+  margin: 10px;
+  text-align: center;
+  &:focus {
+    outline: 0;
+    color: #212529;
+    border-color: #FF8552;
+  };
+  @media (max-width: 475px) {
+    font-size: 14px;
+  }
+`;
+
+const ErrorSpan = styled.span`
+  color: red;
+  font-size: 15px;
+  margin: -10px auto -6px auto;
+`;
+
+const SubmitButton = styled.button`
+  border: none;
+  width: 60%;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform .3s, opacity .3s;
+  margin: 20px auto 0 auto;
+  background-color: #FF8552;
+  color: white;
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+  &:active {
+    transform: scale(1);
+  }
+  &:disabled {
+    background-color: grey;
+    transform: scale(1);
+    opacity: 0.2;
+  }
+`;
+
+const BackButton = styled(SubmitButton)`
+  margin: 10px auto 0 auto;
+  background-color: white;
+  border: 2px solid #FF8552;
+  color: #FF8552;
+`;
 
 const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
 
@@ -18,7 +83,6 @@ const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm({ mode: 'all' });
 
   const changeInputPhone = (e: React.FormEvent<HTMLInputElement>) => {
@@ -68,8 +132,8 @@ const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} action="#" className="form" >
-      <input
+    <FormStyled onSubmit={handleSubmit(onSubmit)} >
+      <InputStyled
         type="text"
         className='input'
         value={phone}
@@ -83,9 +147,9 @@ const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
         })}
         onChange={changeInputPhone}
       />
-      {errors?.phone && <span className='error'>{errors.phone.message?.toString()}</span>}
+      {errors?.phone && <ErrorSpan>{errors.phone.message?.toString()}</ErrorSpan>}
 
-      <input
+      <InputStyled
         type="text"
         value={sum}
         className='input'
@@ -93,11 +157,11 @@ const Form: React.FC<FormProps> = ({ setIsOpened, response }) => {
         onChange={changeInputSum}
         placeholder='Сумма (от 1 до 1000руб)'
       />
-      {errors?.sum && <span className='error'>{errors.sum.message?.toString()}</span>}
+      {errors?.sum && <ErrorSpan>{errors.sum.message?.toString()}</ErrorSpan>}
 
-      <button disabled={disabledBtn} type="submit" className='button submit' name='submitButton'>{textSubmitButton}</button>
-      <button type="reset" onClick={() => navigate.push('/')} className='button backButton'>Назад</button>
-    </form>
+      <SubmitButton disabled={disabledBtn} type="submit" name='submitButton'>{textSubmitButton}</SubmitButton>
+      <BackButton type="reset" onClick={() => navigate.push('/')}>Назад</BackButton>
+    </FormStyled>
   );
 }
 
